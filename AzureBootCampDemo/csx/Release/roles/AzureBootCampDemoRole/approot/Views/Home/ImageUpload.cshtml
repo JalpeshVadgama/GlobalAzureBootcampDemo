@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "Upload";
+}
+
+<h2>Image upload to Blob</h2>
+
+
+@using (Html.BeginForm("ImageUpload", "Home",
+      FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div>Please select an image to upload</div>
+    <input name="imageToUpload" type="file">
+    <br/>
+    <br/>
+    <input type="submit" value="Upload Image" />
+}
+
+
+<h2>
+   Uploaded Images on Azure blob
+</h2>
+
+<ul>
+    @foreach (var image in Model)
+    {
+        <li>
+            <img src="@image" width="150" height="150"/>
+        </li>
+    }
+</ul>
